@@ -86,7 +86,7 @@ input, select, textarea {
 		width: device-width;
 	}
 
-	@media screen and (max-width: 480px) {
+	@media screen and (max-width: 680px) {
 
 		html, body {
 			min-width: 320px;
@@ -366,7 +366,7 @@ input, select, textarea {
 					width: calc(25% - 0.375rem);
 				}
 
-		@media screen and (max-width: 480px) {
+		@media screen and (max-width: 680px) {
 
 			form > .fields {
 				width: calc(100% + 3rem);
@@ -738,7 +738,7 @@ input, select, textarea {
 
 		}
 
-		@media screen and (max-width: 480px) {
+		@media screen and (max-width: 680px) {
 
 			.image.main {
 				margin: 1.5rem 0;
@@ -868,7 +868,7 @@ input, select, textarea {
 				width: 100%;
 			}
 
-		@media screen and (max-width: 480px) {
+		@media screen and (max-width: 680px) {
 
 			ul.actions:not(.fixed) {
 				-moz-flex-direction: column;
@@ -1206,7 +1206,7 @@ input, select, textarea {
 			background-color: #000000;
 		}
 
-	@media screen and (max-width: 480px) {
+	@media screen and (max-width: 481px) {
     #bg:after {
         background-size: cover;         /* Ensures it fills the screen */
         background-position: 20% center;    /* Keeps it centered */
@@ -1262,7 +1262,7 @@ input, select, textarea {
 
 		}
 
-		@media screen and (max-width: 480px) {
+		@media screen and (max-width: 680px) {
 
 			#wrapper {
 				padding: 1rem;
@@ -1503,7 +1503,7 @@ input, select, textarea {
 
 		}
 
-		@media screen and (max-width: 480px) {
+		@media screen and (max-width: 680px) {
 
 			#header {
 				padding: 1.5rem 0;
@@ -1543,6 +1543,18 @@ input, select, textarea {
 				}
 
 		}
+
+.mobile-names { display: none; }
+.desktop-names { display: block; }
+
+@media screen and (max-width: 640px) {
+  .mobile-names { display: block; }
+  .desktop-names { display: none; }
+}
+
+.mobile-names br {
+    display: inline !important;
+}
 
 /* Main */
 
@@ -1658,7 +1670,7 @@ input, select, textarea {
 
 		}
 
-		@media screen and (max-width: 480px) {
+		@media screen and (max-width: 680px) {
 
 			#main article {
 				padding: 3rem 1.5rem 0.5rem 1.5rem ;
@@ -1845,6 +1857,17 @@ input, select, textarea {
 }
 .audio-youtube:hover {
     color: #f39c12;
+}
+
+/* Calendar */
+#calendar h4 {
+	text-align: left;
+	font-weight: bold;
+	margin-bottom: 0.1rem;
+}
+
+#calendar p {
+	margin-bottom: 3rem;
 }
 
 /* Footer */

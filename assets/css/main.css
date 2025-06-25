@@ -1808,6 +1808,18 @@ input, select, textarea {
     z-index: 1;
 }
 
+@media screen and (max-width: 600px) {
+    .musicians {
+        gap: 0.5rem;
+    }
+    .musician-card img {
+        width: 90px;
+        height: 90px;
+    }
+    .musician-card h3 {
+        font-size: 1em;
+    }
+}
 
 /* Listen */
 

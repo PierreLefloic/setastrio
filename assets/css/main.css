@@ -1657,6 +1657,14 @@ input, select, textarea {
 
 		}
 
+.article-img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 2rem auto;
+    border-radius: 10px;
+}
+
 .photo-gallery {
     width: 100%;
     overflow-x: auto;
@@ -1705,6 +1713,45 @@ input, select, textarea {
 .photo-gallery::-webkit-scrollbar-thumb:hover {
     background: #f39c12;
 }
+
+/* Gallery */
+.centered-photo-gallery {
+    width: 100%;
+    overflow-x: auto;
+    padding: 2rem 0;
+    /* Hide scrollbar if you want: */
+    scrollbar-width: none;
+}
+.centered-photo-gallery::-webkit-scrollbar {
+    display: none;
+}
+
+.centered-gallery-track {
+    display: flex;
+    gap: 2rem;
+    scroll-snap-type: x mandatory;
+    align-items: center;
+    padding: 0 20vw; /* Creates the "peek" effect on sides */
+}
+
+.centered-gallery-track img {
+    flex: 0 0 60vw; /* Each image takes 60% of viewport width */
+    max-width: 600px;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+    scroll-snap-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+    background: #222;
+}
+.centered-gallery-track img:hover {
+    transform: scale(1.04);
+    box-shadow: 0 8px 32px #f39c12aa;
+}
+
+
 
 /* Members */
 

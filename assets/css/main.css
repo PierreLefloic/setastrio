@@ -1206,6 +1206,15 @@ input, select, textarea {
 			background-color: #000000;
 		}
 
+	@media screen and (max-width: 600px) {
+    #bg:after {
+        background-size: cover;         /* Ensures it fills the screen */
+        background-position: 20% center;    /* Keeps it centered */
+        /* Optional: Use a different image for mobile */
+        background-image: url('../../images/bg_trio_mobile.jpg');
+    }
+}
+
 /* Wrapper */
 
 	#wrapper {

@@ -1686,6 +1686,50 @@ input, select, textarea {
     border-radius: 10px;
 }
 
+
+
+/* .about-dots {
+    position: absolute;
+    top: 0;
+    left: calc(50vw - 20rem - 5rem);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    z-index: 10;
+}
+.about-dot {
+    width: 18px;
+    height: 18px;
+	box-sizing: border-box;
+    background: #222;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+    border: none;
+    outline: 2px solid #fff;
+	outline-offset: -2px;
+}
+.about-dot.active{
+	background: #222;
+	outline: 2px solid #f39c12;    
+	outline-offset: -2px;
+}
+
+.about-dot:focus{
+	outline: 2px solid #f39c12;
+    outline-offset: 2px;
+}
+
+.about-dot:hover {
+    background: #f39c12;
+}
+
+
+#about {
+    position: relative;
+    overflow-y: auto;
+} */
+
 .photo-gallery {
     width: 100%;
     overflow-x: auto;

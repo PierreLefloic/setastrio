@@ -18,14 +18,19 @@ entries = [
 with open(index_file, "r", encoding="utf-8") as f:
     html = f.read()
 
-new_html = re.sub(
-    r'(<div class="gallery-track"\s*>).*?(</div>)',
-    r'\1\n    ' + "\n    ".join(entries) + r'\2',
-    html,
-    flags=re.DOTALL | re.IGNORECASE
-)
+pattern = r'(<div class="gallery-track"\s*>).*?(</div>)'
 
-with open(index_file, "w", encoding="utf-8") as f:
-    f.write(new_html)
-
-print("Gallery updated in index.html!")
+match = re.search(pattern, html, flags=re.DOTALL | re.IGNORECASE)
+if match:
+    print("Match found!")
+    new_html = re.sub(
+        pattern,
+        r'\1\n    ' + "\n    ".join(entries) + r'\2',
+        html,
+        flags=re.DOTALL | re.IGNORECASE
+    )
+    with open(index_file, "w", encoding="utf-8") as f:
+        f.write(new_html)
+    print("Gallery updated in index.html!")
+else:
+    print("No match found for gallery track div.")

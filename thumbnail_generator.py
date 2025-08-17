@@ -1,4 +1,4 @@
-from PIL import Image
+from PIL import Image, ImageOps
 import os
 import re
 
@@ -20,6 +20,7 @@ for filename in sorted(os.listdir(full_folder)):
         # Only regenerate if missing or outdated
         if not os.path.exists(thumb_path) or os.path.getmtime(thumb_path) < os.path.getmtime(full_path):
             with Image.open(full_path) as img:
+                img = ImageOps.exif_transpose(img)  # Correct orientation
                 img.thumbnail(max_size)
                 img.save(thumb_path, "JPEG", quality=85)
                 print(f"Created thumbnail: {thumb_path}")

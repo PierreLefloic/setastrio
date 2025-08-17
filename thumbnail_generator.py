@@ -26,8 +26,8 @@ for filename in sorted(os.listdir(full_folder)):
 
 # Build gallery HTML entries
 entries = [
-    f'<a href="{os.path.join(full_folder, filename)}" target="_blank">'
-    f'<img src="{os.path.join(thumb_folder, filename)}" alt="{filename}" /></a>'
+    f'<a href="{full_folder}/{filename}" target="_blank">'
+    f'<img src="{thumb_folder}/{filename}" alt="{filename}" /></a>'
     for filename in sorted(os.listdir(full_folder))
     if filename.lower().endswith((".jpg", ".jpeg", ".png", ".webp"))
 ]

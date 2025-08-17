@@ -1,10 +1,11 @@
-name: Generate Thumbnails
+name: Auto-generate Thumbnails & Gallery
 
 on:
   push:
     paths:
-      - "images/full/**"   # only run if new images are added
+      - "images/full/**"
       - "thumbnail_generator.py"
+      - "index.html"
 
 jobs:
   build:
@@ -13,7 +14,7 @@ jobs:
       contents: write   # allow pushing commits
 
     steps:
-      - name: Checkout repo
+      - name: Checkout repository
         uses: actions/checkout@v3
 
       - name: Set up Python
@@ -21,14 +22,16 @@ jobs:
         with:
           python-version: "3.x"
 
-      - name: Install Pillow
+      - name: Install dependencies
         run: pip install pillow
 
-      - name: Generate thumbnails
+      - name: Generate thumbnails and update gallery
         run: python thumbnail_generator.py
 
-      - name: Commit thumbnails
+      - name: Commit changes
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "Auto-generate thumbnails"
-          file_pattern: images/thumbs/*
+          commit_message: "Auto-generate thumbnails and update gallery"
+          file_pattern: |
+            images/thumbs/*
+            index.html

@@ -37,10 +37,10 @@ with open(index_file, "r", encoding="utf-8") as f:
     html = f.read()
 
 new_html = re.sub(
-    r'(<div class="gallery-track">).*?(</div>)',
-    r'\1' + "\n    ".join(entries) + r'\2',
+    r'(<div class="gallery-track"\s*>).*?(</div>)',
+    r'\1\n    ' + "\n    ".join(entries) + r'\2',
     html,
-    flags=re.DOTALL
+    flags=re.DOTALL | re.IGNORECASE
 )
 
 with open(index_file, "w", encoding="utf-8") as f:

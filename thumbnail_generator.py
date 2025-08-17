@@ -9,7 +9,7 @@ index_file = "index.html"
 
 # Thumbnail settings
 os.makedirs(thumb_folder, exist_ok=True)
-max_size = (400, 400)
+max_size = (1000, 1000)
 
 # Generate thumbnails
 for filename in sorted(os.listdir(full_folder)):
@@ -26,8 +26,8 @@ for filename in sorted(os.listdir(full_folder)):
 
 # Build gallery HTML entries
 entries = [
-    f'<a href="{os.path.join(full_folder, filename)}" target="_blank">'
-    f'<img src="{os.path.join(thumb_folder, filename)}" alt="{filename}" /></a>'
+    f'<a href="{full_folder}/{filename}" target="_blank">'
+    f'<img src="{thumb_folder}/{filename}" alt="{filename}" /></a>'
     for filename in sorted(os.listdir(full_folder))
     if filename.lower().endswith((".jpg", ".jpeg", ".png", ".webp"))
 ]

@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - "images/full/**"
+      - "images/thumbs/**"
       - "thumbnail_generator.py"
       - "index.html"
 

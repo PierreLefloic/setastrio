@@ -1950,3 +1950,107 @@ input, select, textarea {
 		body.is-preload #footer {
 			opacity: 0;
 		}
+
+/* Program Styles */
+.concert-program {
+	background: rgba(255, 255, 255, 0.03);
+	border: 1px solid rgba(255, 255, 255, 0.15);
+	border-radius: 8px;
+	padding: 2.5rem;
+	margin-bottom: 3rem;
+}
+
+.concert-header {
+	text-align: center;
+	margin-bottom: 3rem;
+	padding-bottom: 1.5rem;
+	border-bottom: 2px solid #f39c12;
+}
+
+.concert-title {
+	font-size: 1.4rem;
+	font-weight: 600;
+	color: #ffffff;
+	margin-bottom: 0.5rem;
+	text-transform: uppercase;
+	letter-spacing: 0.1rem;
+}
+
+.program-theme {
+	font-size: 1.8rem;
+	color: #f39c12;
+	margin: 0;
+	font-style: italic;
+	font-weight: 300;
+}
+
+.program-divider {
+	height: 3px;
+	background: linear-gradient(90deg, transparent, #f39c12, transparent);
+	margin: 4rem 0;
+	border-radius: 2px;
+}
+
+.program-section {
+	margin-bottom: 3rem;
+}
+
+.program-item {
+	margin-bottom: 2.5rem;
+	padding-bottom: 1.5rem;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.program-item:last-child,
+.program-item.before-intermission {
+	border-bottom: none;
+}
+
+.program-item.before-intermission {
+	margin-bottom: 1rem;
+	padding-bottom: 0.5rem;
+}
+
+.program-item h5 {
+	font-size: 1.1rem;
+	font-weight: 600;
+	margin-bottom: 0.3rem;
+	color: #ffffff;
+}
+
+.program-item .composer {
+	font-size: 0.95rem;
+	font-weight: 400;
+	margin-bottom: 0.2rem;
+	color: #f39c12;
+}
+
+.program-item .description {
+	font-size: 0.85rem;
+	color: rgba(255, 255, 255, 0.7);
+	margin-bottom: 0.8rem;
+}
+
+.movements {
+	margin-left: 1.5rem;
+	margin-top: 0.8rem;
+}
+
+.movements p {
+	font-size: 0.9rem;
+	color: rgba(255, 255, 255, 0.8);
+	margin-bottom: 0.3rem;
+	line-height: 1.4;
+}
+
+.intermission {
+	text-align: center;
+	margin: 0.5rem 0 1.5rem 0;
+	padding: 1rem 0;
+}
+
+.intermission p {
+	font-style: italic;
+	color: rgba(255, 255, 255, 0.6);
+	font-size: 0.9rem;
+}

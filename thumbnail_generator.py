@@ -37,15 +37,15 @@ entries = [
 with open(index_file, "r", encoding="utf-8") as f:
     html = f.read()
 
-# More specific pattern - match gallery-track div content up to the FIRST closing div with proper whitespace
-pattern = r'(<div class="gallery-track">)\s*\n(.*?)\n(\s*</div>)'
+# Pattern that handles closing div on same line or separate line
+pattern = r'(<div class="gallery-track">)(.*?)(</div>)'
 
 match = re.search(pattern, html, flags=re.DOTALL | re.IGNORECASE)
 if match:
     print("Match found!")
     # Preserve the indentation from the original
     indent = "    "
-    new_content = "\n" + indent + ("\n" + indent).join(entries) + "\n"
+    new_content = "\n" + indent + ("\n" + indent).join(entries) + "\n" + indent
     
     new_html = re.sub(
         pattern,
@@ -55,7 +55,7 @@ if match:
     )
     with open(index_file, "w", encoding="utf-8") as f:
         f.write(new_html)
-    print("Gallery updated in index.html!")
+    print(f"Gallery updated in index.html with {len(entries)} images!")
 else:
     print("No match found for gallery track div.")
     print("Trying to find gallery-track in HTML...")

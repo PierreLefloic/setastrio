@@ -25,10 +25,10 @@ for filename in sorted(os.listdir(full_folder)):
                 img.save(thumb_path, "JPEG", quality=85)
                 print(f"Created thumbnail: {thumb_path}")
 
-# Build gallery HTML entries
+# Build gallery HTML entries (with loading="lazy" to match existing format)
 entries = [
     f'<a href="{full_folder}/{filename}" target="_blank">'
-    f'<img src="{thumb_folder}/{filename}" alt="{filename}" /></a>'
+    f'<img src="{thumb_folder}/{filename}" alt="{filename}" loading="lazy"/></a>'
     for filename in sorted(os.listdir(full_folder))
     if filename.lower().endswith((".jpg", ".jpeg", ".png", ".webp"))
 ]
@@ -37,14 +37,19 @@ entries = [
 with open(index_file, "r", encoding="utf-8") as f:
     html = f.read()
 
-pattern = r'(<div class="gallery-track"\s*>).*?(</div>)'
+# More specific pattern - match gallery-track div content up to the FIRST closing div with proper whitespace
+pattern = r'(<div class="gallery-track">)\s*\n(.*?)\n(\s*</div>)'
 
 match = re.search(pattern, html, flags=re.DOTALL | re.IGNORECASE)
 if match:
     print("Match found!")
+    # Preserve the indentation from the original
+    indent = "    "
+    new_content = "\n" + indent + ("\n" + indent).join(entries) + "\n"
+    
     new_html = re.sub(
         pattern,
-        r'\1\n    ' + "\n    ".join(entries) + r'\2',
+        r'\1' + new_content + r'\3',
         html,
         flags=re.DOTALL | re.IGNORECASE
     )
@@ -53,3 +58,8 @@ if match:
     print("Gallery updated in index.html!")
 else:
     print("No match found for gallery track div.")
+    print("Trying to find gallery-track in HTML...")
+    if 'class="gallery-track"' in html:
+        print("gallery-track div exists in HTML")
+    else:
+        print("gallery-track div NOT FOUND in HTML")

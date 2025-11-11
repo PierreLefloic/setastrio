@@ -671,15 +671,14 @@ input, select, textarea {
 	}
 
 		.image:before {
+			/* Disable the textured/dark overlay on inline .image elements so
+			   the page background (#bg:before) keeps the overlay but images
+			   themselves render cleanly. */
+			display: none !important;
 			pointer-events: none;
-			background-image: url("../../images/overlay.png");
-			background-color: rgba(19, 21, 25, 0.5);
-			border-radius: 4px;
 			content: '';
-			display: block;
 			height: 100%;
 			left: 0;
-			opacity: 0.5;
 			position: absolute;
 			top: 0;
 			width: 100%;

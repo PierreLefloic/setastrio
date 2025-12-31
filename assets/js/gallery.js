@@ -5,6 +5,21 @@
     
     // Initialize gallery
     function initGallery() {
+        // Sort images within each gallery group by data-order attribute
+        document.querySelectorAll('.photo-grid').forEach(grid => {
+            const items = Array.from(grid.querySelectorAll('.photo-item'));
+            
+            // Sort by data-order attribute
+            items.sort((a, b) => {
+                const orderA = parseInt(a.getAttribute('data-order')) || 999;
+                const orderB = parseInt(b.getAttribute('data-order')) || 999;
+                return orderA - orderB;
+            });
+            
+            // Re-append in sorted order
+            items.forEach(item => grid.appendChild(item));
+        });
+        
         const photoItems = document.querySelectorAll('.photo-item');
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightbox-img');
@@ -73,13 +88,11 @@
         
         function openLightbox() {
             lightbox.classList.add('active');
-            document.body.style.overflow = 'hidden';
             showImage(currentImageIndex);
         }
         
         function closeLightbox() {
             lightbox.classList.remove('active');
-            document.body.style.overflow = '';
         }
         
         function showImage(index) {

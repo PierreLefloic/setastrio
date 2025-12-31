@@ -1729,53 +1729,159 @@ input, select, textarea {
     overflow-y: auto;
 } */
 
-.photo-gallery {
+/* Gallery - Google Photos Style */
+.gallery-group {
+    margin-bottom: 3rem;
+}
+
+.gallery-group-title {
+    color: #ffffff;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    padding-left: 0.5rem;
+    border-left: 4px solid #f39c12;
+}
+
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 0.5rem;
     width: 100%;
-    overflow-x: auto;
-    margin: 2rem 0;
-    padding-bottom: 2rem;
-	padding-top: 2rem;
-}
-.gallery-track {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-    padding: 0 24px;      /* Add horizontal padding for hover scaling */
-    overflow: visible;    /* Allow images to overflow when scaled */
 }
 
-.gallery-track a {
-    border-bottom: none !important;
-    text-decoration: none !important;
-}
-.gallery-track img {
-    height: 400px;
-    border-radius: 10px;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.12);
-    transition: transform 0.3s;
+.photo-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
     cursor: pointer;
-    background: #222;     /* Optional: for better edge appearance */
-}
-.gallery-track img:hover {
-    transform: scale(1.07);
-    box-shadow: 0 4px 24px #f39c12aa;
+    aspect-ratio: 1;
+    background: #222;
 }
 
-/* Dark themed scrollbar for photo gallery */
-.photo-gallery {
-    scrollbar-color: #444 #181a1b; /* thumb color, track color (for Firefox) */
-    scrollbar-width: thin;
+.photo-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease, filter 0.2s ease;
+    display: block;
 }
-.photo-gallery::-webkit-scrollbar {
-    height: 10px;
-    background: #181a1b;
+
+.photo-item:hover img {
+    transform: scale(1.05);
+    filter: brightness(1.1);
 }
-.photo-gallery::-webkit-scrollbar-thumb {
-    background: #444;
-    border-radius: 6px;
+
+/* Lightbox */
+.lightbox {
+    display: none;
+    position: fixed;
+    z-index: 10000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.95);
+    overflow: auto;
+    padding: 20px;
 }
-.photo-gallery::-webkit-scrollbar-thumb:hover {
-    background: #f39c12;
+
+.lightbox.active {
+    display: block;
+}
+
+.lightbox-content {
+    max-width: 90vw;
+    max-height: none;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 4px;
+    display: block;
+    margin: 0 auto;
+    position: relative;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    color: #ffffff;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s;
+    z-index: 10001;
+}
+
+.lightbox-close:hover {
+    color: #f39c12;
+}
+
+.lightbox-prev,
+.lightbox-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #ffffff;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 16px;
+    user-select: none;
+    transition: background-color 0.3s, color 0.3s;
+    border-radius: 4px;
+}
+
+.lightbox-prev:hover,
+.lightbox-next:hover {
+    background-color: rgba(243, 156, 18, 0.8);
+}
+
+.lightbox-prev {
+    left: 20px;
+}
+
+.lightbox-next {
+    right: 20px;
+}
+
+.lightbox-caption {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #ffffff;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-size: 1rem;
+    text-align: center;
+    max-width: 80%;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 736px) {
+    .photo-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 0.3rem;
+    }
+    
+    .gallery-group-title {
+        font-size: 1.2rem;
+    }
+    
+    .lightbox-prev,
+    .lightbox-next {
+        font-size: 30px;
+        padding: 10px;
+    }
+    
+    .lightbox-close {
+        top: 10px;
+        right: 20px;
+        font-size: 30px;
+    }
 }
 
 #main {

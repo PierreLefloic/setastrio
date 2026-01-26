@@ -1760,6 +1760,8 @@ input, select, textarea {
     cursor: pointer;
     aspect-ratio: 1;
     background: #222;
+    border-bottom: none;
+    text-decoration: none;
 }
 
 .photo-item img {

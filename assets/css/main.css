@@ -2325,3 +2325,86 @@ details .event-item:hover {
 	color: rgba(255, 255, 255, 0.6);
 	font-size: 0.9rem;
 }
+
+/* Program Notes Collapsible */
+.program-notes {
+	margin-top: 0.75rem;
+	border: none;
+	border-radius: 0;
+	background: transparent;
+	overflow: hidden;
+}
+
+.program-notes summary {
+	cursor: pointer;
+	padding: 0.5rem 0;
+	font-size: 0.75rem;
+	font-weight: 400;
+	color: rgba(255, 255, 255, 0.5);
+	text-transform: none;
+	letter-spacing: 0.02rem;
+	user-select: none;
+	transition: all 0.2s ease;
+	position: relative;
+	padding-left: 1rem;
+	font-style: italic;
+	list-style: none;
+}
+
+.program-notes summary:hover {
+	background: transparent;
+	color: rgba(255, 255, 255, 0.7);
+}
+
+.program-notes summary::before {
+	content: '+';
+	position: absolute;
+	left: 0;
+	transition: all 0.2s ease;
+	display: inline-block;
+	font-style: normal;
+	font-size: 0.9rem;
+}
+
+.program-notes[open] summary::before {
+	content: '−';
+}
+
+.program-notes summary::marker,
+.program-notes summary::-webkit-details-marker {
+	display: none;
+}
+
+.program-notes summary::-moz-list-bullet {
+	list-style-type: none;
+}
+
+.notes-content {
+	padding: 0.75rem 0 0 1rem;
+	border-top: none;
+	background: transparent;
+	animation: slideDown 0.25s ease;
+}
+
+@keyframes slideDown {
+	from {
+		opacity: 0;
+		transform: translateY(-5px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+.notes-content p {
+	font-size: 0.85rem;
+	line-height: 1.65;
+	color: rgba(255, 255, 255, 0.6);
+	margin-bottom: 0.7rem;
+	text-align: justify;
+}
+
+.notes-content p:last-child {
+	margin-bottom: 0;
+}

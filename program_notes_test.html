@@ -1,0 +1,665 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Program Notes - Style Tests</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<style>
+		@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300italic,600italic,300,600");
+		
+		body {
+			font-family: "Source Sans Pro", Helvetica, sans-serif;
+			background: #1b1f22;
+			color: #ffffff;
+			padding: 3rem;
+			line-height: 1.65;
+		}
+		
+		.container {
+			max-width: 900px;
+			margin: 0 auto;
+		}
+		
+		h1 {
+			text-align: center;
+			margin-bottom: 3rem;
+			color: #f39c12;
+		}
+		
+		.style-section {
+			background: rgba(255, 255, 255, 0.03);
+			border: 1px solid rgba(255, 255, 255, 0.15);
+			border-radius: 8px;
+			padding: 2.5rem;
+			margin-bottom: 3rem;
+		}
+		
+		.style-section h2 {
+			margin-top: 0;
+			margin-bottom: 0.5rem;
+			color: #f39c12;
+			font-size: 1.2rem;
+		}
+		
+		.style-description {
+			font-size: 0.85rem;
+			color: rgba(255, 255, 255, 0.6);
+			margin-bottom: 2rem;
+			font-style: italic;
+		}
+		
+		.program-item {
+			margin-bottom: 2.5rem;
+			padding-bottom: 1.5rem;
+			border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+		}
+		
+		.program-item:last-child {
+			border-bottom: none;
+		}
+		
+		.program-item h5 {
+			font-size: 1.1rem;
+			font-weight: 600;
+			margin-bottom: 0.3rem;
+			color: #ffffff;
+		}
+		
+		.program-item .composer {
+			font-size: 0.95rem;
+			font-weight: 400;
+			margin-bottom: 0.2rem;
+			color: #f39c12;
+		}
+		
+		.program-item .description {
+			font-size: 0.85rem;
+			color: rgba(255, 255, 255, 0.7);
+			margin-bottom: 0.8rem;
+		}
+		
+		/* Style 1: Current Subtle Style */
+		.style-1 .program-notes {
+			margin-top: 0.75rem;
+			border: none;
+			border-radius: 0;
+			background: transparent;
+			overflow: hidden;
+		}
+		
+		.style-1 .program-notes summary {
+			cursor: pointer;
+			padding: 0.5rem 0;
+			font-size: 0.75rem;
+			font-weight: 400;
+			color: rgba(255, 255, 255, 0.5);
+			text-transform: none;
+			letter-spacing: 0.02rem;
+			user-select: none;
+			transition: all 0.2s ease;
+			position: relative;
+			padding-left: 1rem;
+			font-style: italic;
+			list-style: none;
+		}
+		
+		.style-1 .program-notes summary:hover {
+			background: transparent;
+			color: rgba(255, 255, 255, 0.7);
+		}
+		
+		.style-1 .program-notes summary::before {
+			content: '+';
+			position: absolute;
+			left: 0;
+			transition: all 0.2s ease;
+			display: inline-block;
+			font-style: normal;
+			font-size: 0.9rem;
+		}
+		
+		.style-1 .program-notes[open] summary::before {
+			content: '−';
+		}
+		
+		.style-1 .program-notes summary::marker,
+		.style-1 .program-notes summary::-webkit-details-marker {
+			display: none;
+		}
+		
+		.style-1 .notes-content {
+			padding: 0.75rem 0 0 1rem;
+			border-top: none;
+			background: transparent;
+		}
+		
+		.style-1 .notes-content p {
+			font-size: 0.85rem;
+			line-height: 1.65;
+			color: rgba(255, 255, 255, 0.6);
+			margin-bottom: 0.7rem;
+			text-align: justify;
+		}
+		
+		/* Style 2: Bordered Card */
+		.style-2 .program-notes {
+			margin-top: 1rem;
+			border: 1px solid rgba(243, 156, 18, 0.3);
+			border-radius: 6px;
+			background: rgba(243, 156, 18, 0.05);
+			overflow: hidden;
+		}
+		
+		.style-2 .program-notes summary {
+			cursor: pointer;
+			padding: 0.75rem 1rem;
+			font-size: 0.8rem;
+			font-weight: 500;
+			color: #f39c12;
+			text-transform: none;
+			letter-spacing: 0.03rem;
+			user-select: none;
+			transition: all 0.3s ease;
+			position: relative;
+			padding-left: 2rem;
+			list-style: none;
+		}
+		
+		.style-2 .program-notes summary:hover {
+			background: rgba(243, 156, 18, 0.1);
+		}
+		
+		.style-2 .program-notes summary::before {
+			content: '▸';
+			position: absolute;
+			left: 0.75rem;
+			transition: transform 0.3s ease;
+			display: inline-block;
+		}
+		
+		.style-2 .program-notes[open] summary::before {
+			transform: rotate(90deg);
+		}
+		
+		.style-2 .program-notes summary::marker,
+		.style-2 .program-notes summary::-webkit-details-marker {
+			display: none;
+		}
+		
+		.style-2 .notes-content {
+			padding: 1rem 1.5rem 1.25rem;
+			border-top: 1px solid rgba(243, 156, 18, 0.2);
+			background: rgba(0, 0, 0, 0.15);
+		}
+		
+		.style-2 .notes-content p {
+			font-size: 0.85rem;
+			line-height: 1.7;
+			color: rgba(255, 255, 255, 0.75);
+			margin-bottom: 0.7rem;
+			text-align: justify;
+		}
+		
+		/* Style 3: Underline Only */
+		.style-3 .program-notes {
+			margin-top: 0.5rem;
+			border: none;
+			border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+			background: transparent;
+			overflow: hidden;
+		}
+		
+		.style-3 .program-notes summary {
+			cursor: pointer;
+			padding: 0.5rem 0;
+			font-size: 0.75rem;
+			font-weight: 400;
+			color: rgba(255, 255, 255, 0.6);
+			text-transform: none;
+			letter-spacing: 0.02rem;
+			user-select: none;
+			transition: all 0.2s ease;
+			position: relative;
+			padding-left: 0;
+			list-style: none;
+		}
+		
+		.style-3 .program-notes summary:hover {
+			color: #f39c12;
+		}
+		
+		.style-3 .program-notes summary::after {
+			content: '↓';
+			margin-left: 0.5rem;
+			transition: transform 0.2s ease;
+			display: inline-block;
+			font-size: 0.7rem;
+		}
+		
+		.style-3 .program-notes[open] summary::after {
+			transform: rotate(180deg);
+		}
+		
+		.style-3 .program-notes summary::marker,
+		.style-3 .program-notes summary::-webkit-details-marker {
+			display: none;
+		}
+		
+		.style-3 .notes-content {
+			padding: 1rem 0;
+			background: transparent;
+		}
+		
+		.style-3 .notes-content p {
+			font-size: 0.85rem;
+			line-height: 1.65;
+			color: rgba(255, 255, 255, 0.65);
+			margin-bottom: 0.7rem;
+			text-align: justify;
+		}
+		
+		/* Style 4: Minimal Dot */
+		.style-4 .program-notes {
+			margin-top: 0.75rem;
+			border: none;
+			background: transparent;
+			overflow: hidden;
+		}
+		
+		.style-4 .program-notes summary {
+			cursor: pointer;
+			padding: 0.4rem 0;
+			font-size: 0.7rem;
+			font-weight: 400;
+			color: rgba(255, 255, 255, 0.4);
+			text-transform: uppercase;
+			letter-spacing: 0.08rem;
+			user-select: none;
+			transition: all 0.2s ease;
+			position: relative;
+			padding-left: 0.8rem;
+			list-style: none;
+		}
+		
+		.style-4 .program-notes summary:hover {
+			color: rgba(255, 255, 255, 0.6);
+		}
+		
+		.style-4 .program-notes summary::before {
+			content: '•';
+			position: absolute;
+			left: 0;
+			transition: all 0.2s ease;
+			display: inline-block;
+			color: #f39c12;
+		}
+		
+		.style-4 .program-notes[open] summary::before {
+			content: '◦';
+		}
+		
+		.style-4 .program-notes summary::marker,
+		.style-4 .program-notes summary::-webkit-details-marker {
+			display: none;
+		}
+		
+		.style-4 .notes-content {
+			padding: 0.5rem 0 0 0.8rem;
+			background: transparent;
+		}
+		
+		.style-4 .notes-content p {
+			font-size: 0.85rem;
+			line-height: 1.65;
+			color: rgba(255, 255, 255, 0.55);
+			margin-bottom: 0.7rem;
+			text-align: justify;
+		}
+		
+		/* Style 5: Accordion Style */
+		.style-5 .program-notes {
+			margin-top: 1rem;
+			border-left: 3px solid rgba(243, 156, 18, 0.3);
+			background: transparent;
+			overflow: hidden;
+		}
+		
+		.style-5 .program-notes summary {
+			cursor: pointer;
+			padding: 0.6rem 1rem;
+			font-size: 0.8rem;
+			font-weight: 500;
+			color: rgba(255, 255, 255, 0.7);
+			text-transform: none;
+			letter-spacing: 0.02rem;
+			user-select: none;
+			transition: all 0.2s ease;
+			position: relative;
+			list-style: none;
+			background: rgba(243, 156, 18, 0.03);
+		}
+		
+		.style-5 .program-notes summary:hover {
+			background: rgba(243, 156, 18, 0.08);
+			color: #ffffff;
+		}
+		
+		.style-5 .program-notes[open] summary {
+			background: rgba(243, 156, 18, 0.08);
+			border-left: 3px solid rgba(243, 156, 18, 0.5);
+			margin-left: -3px;
+		}
+		
+		.style-5 .program-notes summary::after {
+			content: '＋';
+			position: absolute;
+			right: 1rem;
+			transition: all 0.2s ease;
+			display: inline-block;
+			font-size: 0.8rem;
+		}
+		
+		.style-5 .program-notes[open] summary::after {
+			content: '－';
+		}
+		
+		.style-5 .program-notes summary::marker,
+		.style-5 .program-notes summary::-webkit-details-marker {
+			display: none;
+		}
+		
+		.style-5 .notes-content {
+			padding: 1rem 1rem 1rem 1rem;
+			background: transparent;
+		}
+		
+		.style-5 .notes-content p {
+			font-size: 0.85rem;
+			line-height: 1.7;
+			color: rgba(255, 255, 255, 0.65);
+			margin-bottom: 0.7rem;
+			text-align: justify;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<h1>Program Notes - Style Variations</h1>
+		
+		<!-- Style 1: Current Subtle -->
+		<div class="style-section style-1">
+			<h2>Style 1: Subtle (With +/−)</h2>
+			<p class="style-description">Very discreet, minimal styling. Light italic text with simple +/− indicator.</p>
+			
+			<div class="program-item">
+				<h5>Piano Trio No. 2 in E♭ Major, D. 929</h5>
+				<p class="composer">Franz Schubert</p>
+				<p class="description"><em>(1797-1828)</em></p>
+				<details class="program-notes">
+					<summary>Program Notes</summary>
+					<div class="notes-content">
+						<p>Composed in 1827, near the end of Schubert's short life, the Piano Trio No. 2 is a large-scale, deeply expressive chamber work that blends lyricism, emotional depth, and classical balance.</p>
+						<p>Spanning four movements, the trio moves from a grand and expansive opening Allegro, through a poignant second movement (Andante con moto)—featuring one of Schubert's most memorable melodies—followed by a graceful Scherzo and a spirited, rhythmically charged Finale.</p>
+					</div>
+				</details>
+			</div>
+		</div>
+		
+		<!-- Style 2: Bordered Card -->
+		<div class="style-section style-2">
+			<h2>Style 2: Bordered Card</h2>
+			<p class="style-description">More prominent with subtle border and background. Arrow indicator rotates when open.</p>
+			
+			<div class="program-item">
+				<h5>Piano Trio No. 2 in E♭ Major, D. 929</h5>
+				<p class="composer">Franz Schubert</p>
+				<p class="description"><em>(1797-1828)</em></p>
+				<details class="program-notes">
+					<summary>Program Notes</summary>
+					<div class="notes-content">
+						<p>Composed in 1827, near the end of Schubert's short life, the Piano Trio No. 2 is a large-scale, deeply expressive chamber work that blends lyricism, emotional depth, and classical balance.</p>
+						<p>Spanning four movements, the trio moves from a grand and expansive opening Allegro, through a poignant second movement (Andante con moto)—featuring one of Schubert's most memorable melodies—followed by a graceful Scherzo and a spirited, rhythmically charged Finale.</p>
+					</div>
+				</details>
+			</div>
+		</div>
+		
+		<!-- Style 3: Underline Only -->
+		<div class="style-section style-3">
+			<h2>Style 3: Underline Only</h2>
+			<p class="style-description">Minimal separation with just an underline. Small arrow at the end of text.</p>
+			
+			<div class="program-item">
+				<h5>Piano Trio No. 2 in E♭ Major, D. 929</h5>
+				<p class="composer">Franz Schubert</p>
+				<p class="description"><em>(1797-1828)</em></p>
+				<details class="program-notes">
+					<summary>Program Notes</summary>
+					<div class="notes-content">
+						<p>Composed in 1827, near the end of Schubert's short life, the Piano Trio No. 2 is a large-scale, deeply expressive chamber work that blends lyricism, emotional depth, and classical balance.</p>
+						<p>Spanning four movements, the trio moves from a grand and expansive opening Allegro, through a poignant second movement (Andante con moto)—featuring one of Schubert's most memorable melodies—followed by a graceful Scherzo and a spirited, rhythmically charged Finale.</p>
+					</div>
+				</details>
+			</div>
+		</div>
+		
+		<!-- Style 4: Minimal Dot -->
+		<div class="style-section style-4">
+			<h2>Style 4: Minimal Dot</h2>
+			<p class="style-description">Very subtle with small uppercase text. Bullet point changes when expanded.</p>
+			
+			<div class="program-item">
+				<h5>Piano Trio No. 2 in E♭ Major, D. 929</h5>
+				<p class="composer">Franz Schubert</p>
+				<p class="description"><em>(1797-1828)</em></p>
+				<details class="program-notes">
+					<summary>Program Notes</summary>
+					<div class="notes-content">
+						<p>Composed in 1827, near the end of Schubert's short life, the Piano Trio No. 2 is a large-scale, deeply expressive chamber work that blends lyricism, emotional depth, and classical balance.</p>
+						<p>Spanning four movements, the trio moves from a grand and expansive opening Allegro, through a poignant second movement (Andante con moto)—featuring one of Schubert's most memorable melodies—followed by a graceful Scherzo and a spirited, rhythmically charged Finale.</p>
+					</div>
+				</details>
+			</div>
+		</div>
+		
+		<!-- Style 5: Accordion Style -->
+		<div class="style-section style-5">
+			<h2>Style 5: Accordion Style</h2>
+			<p class="style-description">Left border accent with subtle background. Clean accordion-like appearance.</p>
+			
+			<div class="program-item">
+				<h5>Piano Trio No. 2 in E♭ Major, D. 929</h5>
+				<p class="composer">Franz Schubert</p>
+				<p class="description"><em>(1797-1828)</em></p>
+				<details class="program-notes">
+					<summary>Program Notes</summary>
+					<div class="notes-content">
+						<p>Composed in 1827, near the end of Schubert's short life, the Piano Trio No. 2 is a large-scale, deeply expressive chamber work that blends lyricism, emotional depth, and classical balance.</p>
+						<p>Spanning four movements, the trio moves from a grand and expansive opening Allegro, through a poignant second movement (Andante con moto)—featuring one of Schubert's most memorable melodies—followed by a graceful Scherzo and a spirited, rhythmically charged Finale.</p>
+					</div>
+				</details>
+			</div>
+		</div>
+		
+		<!-- Style 6: Hover Popup Icon -->
+		<div class="style-section">
+			<h2>Style 6: Note Icon with Hover Popup</h2>
+			<p class="style-description">Clean icon-based approach with a modern popup tooltip on hover. Minimal visual footprint.</p>
+			
+			<style>
+				/* Style 6 specific styles */
+				.style-6 .program-item {
+					margin-bottom: 2rem;
+					position: relative;
+				}
+				
+				.style-6 h5 {
+					color: #ffffff;
+					font-size: 1rem;
+					font-weight: 600;
+					margin: 0 0 0.3rem 0;
+					display: inline-block;
+				}
+				
+				.style-6 .composer {
+					color: rgba(255, 255, 255, 0.7);
+					font-size: 0.9rem;
+					margin: 0 0 0.2rem 0;
+				}
+				
+				.style-6 .description {
+					color: rgba(255, 255, 255, 0.5);
+					font-size: 0.85rem;
+					margin: 0;
+				}
+				
+				/* Note icon container */
+				.style-6 .note-icon-wrapper {
+					display: inline-block;
+					position: relative;
+					margin-left: 0.5rem;
+					vertical-align: middle;
+				}
+				
+				.style-6 .note-icon {
+					display: inline-block;
+					position: relative;
+					width: 18px;
+					height: 18px;
+					background: rgba(243, 156, 18, 0.25);
+					border: 1px solid rgba(243, 156, 18, 0.4);
+					border-radius: 2px;
+					cursor: help;
+					transition: all 0.3s ease;
+				}
+				
+				/* Folded corner effect for post-it look */
+				.style-6 .note-icon::before {
+					content: '';
+					position: absolute;
+					top: 0;
+					right: 0;
+					width: 0;
+					height: 0;
+					border-style: solid;
+					border-width: 0 6px 6px 0;
+					border-color: transparent rgba(243, 156, 18, 0.6) transparent transparent;
+					border-radius: 0 2px 0 0;
+				}
+				
+				/* Lines on the note */
+				.style-6 .note-icon::after {
+					content: '';
+					position: absolute;
+					top: 6px;
+					left: 3px;
+					right: 3px;
+					height: 1px;
+					background: rgba(243, 156, 18, 0.4);
+					box-shadow: 0 3px 0 rgba(243, 156, 18, 0.4);
+				}
+				
+				.style-6 .note-icon:hover {
+					background: rgba(243, 156, 18, 0.35);
+					border-color: #f39c12;
+					transform: scale(1.15);
+				}
+				
+				.style-6 .note-icon:hover::before {
+					border-color: transparent #f39c12 transparent transparent;
+				}
+				
+				/* Popup tooltip */
+				.style-6 .note-popup {
+					position: absolute;
+					bottom: calc(100% + 15px);
+					left: 50%;
+					transform: translateX(-50%) translateY(10px);
+					width: 350px;
+					max-width: 90vw;
+					background: rgba(30, 34, 38, 0.98);
+					border: 1px solid rgba(243, 156, 18, 0.3);
+					border-radius: 8px;
+					padding: 1.25rem;
+					box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+					opacity: 0;
+					visibility: hidden;
+					transition: all 0.3s ease;
+					pointer-events: none;
+					z-index: 1000;
+					backdrop-filter: blur(10px);
+				}
+				
+				/* Arrow pointing down */
+				.style-6 .note-popup::after {
+					content: '';
+					position: absolute;
+					top: 100%;
+					left: 50%;
+					transform: translateX(-50%);
+					width: 0;
+					height: 0;
+					border-left: 8px solid transparent;
+					border-right: 8px solid transparent;
+					border-top: 8px solid rgba(243, 156, 18, 0.3);
+				}
+				
+				.style-6 .note-icon-wrapper:hover .note-popup {
+					opacity: 1;
+					visibility: visible;
+					transform: translateX(-50%) translateY(0);
+				}
+				
+				.style-6 .note-popup p {
+					color: rgba(255, 255, 255, 0.85);
+					font-size: 0.8rem;
+					line-height: 1.5;
+					margin: 0 0 0.8rem 0;
+				}
+				
+				.style-6 .note-popup p:last-child {
+					margin-bottom: 0;
+				}
+				
+				/* Mobile adjustments */
+				@media screen and (max-width: 480px) {
+					.style-6 .note-popup {
+						width: 280px;
+						left: auto;
+						right: 0;
+						transform: translateX(0) translateY(10px);
+					}
+					
+					.style-6 .note-popup::after {
+						left: auto;
+						right: 10px;
+						transform: translateX(0);
+					}
+					
+					.style-6 .note-icon-wrapper:hover .note-popup {
+						transform: translateX(0) translateY(0);
+					}
+				}
+			</style>
+			
+			<div class="style-6">
+				<div class="program-item">
+					<h5>
+						Piano Trio No. 2 in E♭ Major, D. 929
+						<span class="note-icon-wrapper">
+							<span class="note-icon"></span>
+							<div class="note-popup">
+								<p>Composed in 1827, near the end of Schubert's short life, the Piano Trio No. 2 is a large-scale, deeply expressive chamber work that blends lyricism, emotional depth, and classical balance.</p>
+								<p>Spanning four movements, the trio moves from a grand and expansive opening Allegro, through a poignant second movement (Andante con moto)—featuring one of Schubert's most memorable melodies—followed by a graceful Scherzo and a spirited, rhythmically charged Finale.</p>
+							</div>
+						</span>
+					</h5>
+					<p class="composer">Franz Schubert</p>
+					<p class="description"><em>(1797-1828)</em></p>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+</body>
+</html>
